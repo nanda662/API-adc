@@ -1,32 +1,14 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const userSchema = new mongoose.Schema({
-    
-    nome: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    telefone: {
-        type: String,
-        required: true
-    },
-    data_nascimento: {
-        type: Date,
-        required: true
-    },
-    tipo_user: {
-        type: String,
-        required: true
-    },
-    senha: {
-        type: String,
-        required: true
-    }
-
-})
+  id_user: { type: String, default: uuidv4},
+  nome: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  telefone: { type: String },
+  dataNasc: { type: Date },
+  tipo_user: { type: String, enum: ["cliente", "psicologo", "advogado"], required: true },
+  senha: { type: String, required: true },
+  });
 
 export default mongoose.model('User', userSchema);
