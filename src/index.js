@@ -28,7 +28,7 @@ app.post("/users", async (req, res) => {
             return res.status(400).json({ message: "Tipo de usuário inválido!" });
         }
 
-        // Criando o objeto básico de usuário
+        // Criando 
         const novoUsuario = {
             nome,
             email,
@@ -49,7 +49,7 @@ app.post("/users", async (req, res) => {
             novoUsuario.OAB = OAB;
         }
 
-        // Criar o usuário no banco
+        // Criar o user no banco
         const user = await User.create(novoUsuario);
         res.status(201).json(user);
     } catch (error) {
@@ -77,12 +77,12 @@ app.post("/consultas", async (req, res) => {
     try {
         const { id_cliente, id_profissional, tipo_profissional, dt_consulta, tarifa, status_consulta, tipo_consulta } = req.body;
 
-        // Validação simples (opcional, pode ser expandida)
+        // Validação 
         if (!id_cliente || !id_profissional || !tipo_profissional) {
             return res.status(400).json({ error: "Os campos id_cliente, id_profissional e tipo_profissional são obrigatórios!" });
         }
 
-        // Criação da nova consulta
+        // nova consulta
         const novaConsulta = new Consulta({
             id_cliente,
             id_profissional,
@@ -96,7 +96,7 @@ app.post("/consultas", async (req, res) => {
         // Salvando no banco de dados
         const consultaSalva = await novaConsulta.save();
 
-        // Resposta de sucesso
+        // slc
         res.status(201).json({
             message: "Consulta criada com sucesso!",
             consulta: consultaSalva,
@@ -110,8 +110,8 @@ app.post("/consultas", async (req, res) => {
 app.get("/consultas", async (req, res) => {
     try {
         const consultas = await Consulta.find()
-            .populate("id_cliente", "nome email") // Popula informações do cliente (opcional)
-            .populate("id_profissional", "nome email tipo_user"); // Popula informações do profissional (opcional)
+            .populate("id_cliente", "nome email") // faz bagulho la
+            .populate("id_profissional", "nome email tipo_user"); // o mesmo bagulho
         res.status(200).json(consultas);
     } catch (err) {
         res.status(500).json({ error: err.message });
