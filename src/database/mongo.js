@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
-async function connectDatabase() {
-    await mongoose.connect(
-        'mongodb+srv://izaquemiranda881:adc-api.f4bal.mongodb.net/?retryWrites=true&w=majority&appName=ADC-api'
-    )
-
-}
+const connectDatabase = async () => {
+  const mongoUri = process.env.MONGO_URI; 
+  await mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+  console.log("MongoDB conectado!");
+};
 
 export default connectDatabase
