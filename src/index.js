@@ -4,10 +4,9 @@ import Avaliacao from "./models/Avaliacao.js";
 import Transacao from "./models/Transacao.js";
 import Consulta from "./models/Consulta.js";
 import User from "./models/User.js";
-import Cliente from "./models/Cliente.js";
-import Psicologo from "./models/Psicologo.js";
-import Advogado from "./models/Advogado.js";
 import connectDatabase from "./database/mongo.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(express.json());
