@@ -286,6 +286,6 @@ app.post("/avaliacoes", async (req, res) => {
 
 connectDatabase()
     .then(() => {
-        app.listen(5000, () => console.log("Conectado"))
+        app.listen(PORT, () => console.log("Conectado"))
     })
     .catch((error) => console.log(error));
