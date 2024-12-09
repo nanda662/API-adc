@@ -282,10 +282,13 @@ app.post("/avaliacoes", async (req, res) => {
   });
   
   
-
-
+  app.get('/', (req, res) => {
+    res.send('Bem-vindo à API!');
+  });
 connectDatabase()
     .then(() => {
         app.listen(PORT, () => console.log("Conectado"))
     })
     .catch((error) => console.log(error));
+
+    export default app;
